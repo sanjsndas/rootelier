@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rootelier | Premium Design & Plant Studio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4A6B2A;
+            --secondary: #7A9F5A;
+            --accent: #E8D8B0;
+            --light: #F9F7F0;
+            --dark: #2A3C1E;
+            --text: #333333;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.7;
+            color: var(--text);
+            background-color: var(--light);
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            color: var(--dark);
+        }
+        
+        .hero {
+            background: linear-gradient(rgba(42, 60, 30, 0.7), rgba(42, 60, 30, 0.7)), url('https://images.unsplash.com/photo-1534710961216-75c88202f43e') no-repeat center center/cover;
+            height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            position: relative;
+        }
+        
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 100px;
+            background: linear-gradient(to top, var(--light), transparent);
+        }
+        
+        .nav-item {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-item::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-item:hover::after {
+            width: 100%;
+        }
+        
+        .service-card {
+            transition: all 0.3s ease;
+            border-radius: 8px;
+            overflow: hidden;
+            background-color: white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .service-icon {
+            background-color: var(--primary);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            font-size: 24px;
+        }
+        
+        .testimonial-card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            position: relative;
+            padding: 30px;
+        }
+        
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            font-size: 60px;
+            color: rgba(74, 107, 42, 0.1);
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .plant-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .plant-card img {
+            transition: transform 0.5s ease;
+        }
+        
+        .plant-card:hover img {
+            transform: scale(1.05);
+        }
+        
+        .plant-card-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(42, 60, 30, 0.9), transparent);
+            color: white;
+            padding: 20px;
+        }
+        
+        .consultant-section {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .disclaimer {
+            border-left: 4px solid var(--primary);
+            background-color: rgba(74, 107, 42, 0.1);
+            border-radius: 8px;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            display: inline-block;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+            font-size: 14px;
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--dark);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .section-title {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 40px;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--primary);
+        }
+        
+        /* Animation classes */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .animate-fade-in {
+            animation: fadeIn 1s ease-in;
+        }
+        
+        @keyframes slideInLeft {
+            from { transform: translateX(-50px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        
+        .animate-slide-left {
+            animation: slideInLeft 0.8s ease-out;
+        }
+        
+        @keyframes slideInRight {
+            from { transform: translateX(50px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        
+        .animate-slide-right {
+            animation: slideInRight 0.8s ease-out;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .hero {
+                height: 70vh;
+            }
+            
+            .plant-card-overlay {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body class="font-sans">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <a href="#" class="flex items-center">
+                    <span class="text-3xl font-bold text-green-800 font-serif">Rootelier</span>
+                    <span class="text-xs ml-2 text-gray-600 italic">The root of every beautiful space</span>
+                </a>
+                
+                <div class="hidden md:flex space-x-8">
+                   <a href="index.html" tabindex="0"aria-current="page">Home</a>
+        <a href="privacy.html" tabindex="0">Privacy</a>
+        <a href="terms.html" tabindex="0">Terms & conditons</a>
+        <a href="cookies.html"tabindex="0">Cookies</a>
+        <a href="contact.html" tabindex="0">Contact us</a>
+                </div>
+                
+                <button class="md:hidden focus:outline-none" id="mobile-menu-button">
+                    <svg class="w-6 h-6 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+            
+            
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container mx-auto px-6 z-10">
+            <h1 class="text-5xl md:text-6xl font-bold mb-4">Cultivate Your Perfect Space</h1>
+            <p class="text-xl md:text-2xl mb-8 max-w-2xl mx-auto">Transform your environment with our premium plant design services and expert horticultural advice.</p>
+            <a href="#contact" class="btn-primary">Book a Consultation</a>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section class="py-16">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold mb-12 text-center section-title">About Rootelier</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div class="animate-slide-left">
+                    <img src="p1.png" alt="Plant studio" class="rounded-lg shadow-xl">
+                </div>
+                <div class="animate-slide-right">
+                    <h3 class="text-2xl font-semibold mb-4">Our Story</h3>
+                    <p class="mb-4">Founded in 2015, Rootelier began as a humble yet passionate plant studio nestled in the heart of New York City. At a time when urban spaces were rapidly becoming denser and more digital, we saw an urgent need to reconnect people with the natural world. Rootelier was born from this realization—a dream rooted in green living and artistic design.
+
+Our name, “Rootelier,” is a fusion of two words: "root", symbolizing the essential, life-giving part of every plant, and "atelier", the French word for a workshop or artist's studio. Together, they express our mission: to nurture nature at its roots while crafting visually striking, meaningful botanical experiences.
+
+We didn’t just want to sell plants. We wanted to revitalize the relationship between people and plants, especially in bustling urban environments where greenery is scarce but deeply needed. From the very beginning, Rootelier aimed to create plant experiences that were not only healthy and sustainable but also artistically rich and emotionally uplifting..</p>
+                    <p class="mb-6">Today, we've grown into a premier design service with a team of expert horticulturists, landscape architects, and interior designers working together to create stunning botanical environments for homes and businesses.</p>
+                    <a href="about.html" class="btn-primary">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="py-16 bg-green-50">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold mb-12 text-center section-title">Our Services</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="service-card p-8 text-center">
+                    <div class="service-icon mb-6">
+                        <i class="fas fa-pencil-ruler"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Custom Plant Design</h3>
+                    <p class="mb-4">Our designers create personalized plant arrangements tailored to your space, light conditions, and aesthetic preferences. We take into account your lifestyle and the functionality of the space to ensure that the plants not only look beautiful but also thrive.</p>
+                    <img src="s1.jpeg" alt="Custom Plant Design" class="rounded-lg mb-4">
+                    <a href="#" class="text-green-700 font-medium hover:underline">Explore Design Options</a>
+                </div>
+                <div class="service-card p-8 text-center">
+                    <div class="service-icon mb-6">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Plant Selection</h3>
+                    <p class="mb-4">We help you choose the perfect plants for your environment, considering factors like maintenance level, air purification, and visual impact. Our extensive catalog includes a variety of indoor and outdoor plants suitable for any space.</p>
+                    <img src="s2.jpeg" alt="Plant Selection" class="rounded-lg mb-4">
+                    <a href="#" class="text-green-700 font-medium hover:underline">View Plant Catalog</a>
+                </div>
+                <div class="service-card p-8 text-center">
+                    <div class="service-icon mb-6">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Installation & Care</h3>
+                    <p class="mb-4">Our team handles everything from delivery to installation, plus ongoing maintenance plans to keep your plants thriving. We offer tailored care schedules to ensure your plants receive the right amount of water, light, and nutrients.</p>
+                    <img src="s3.jpeg" alt="Installation & Care" class="rounded-lg mb-4">
+                    <a href="#" class="text-green-700 font-medium hover:underline">See Maintenance Plans</a>
+                </div>
+            </div>
+           
+        </div>
+    </section>
+
+    <!-- Featured Plants Section -->
+    <section class="py-16">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold mb-12 text-center section-title">Featured Plants</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="plant-card h-64">
+                    <img src="g1.jpeg" alt="Monstera plant" class="w-full h-full object-cover">
+                    <div class="plant-card-overlay">
+                        <h3 class="font-bold">Monstera Deliciosa</h3>
+                        <p class="text-sm">Low maintenance • Bright indirect light</p>
+                    </div>
+                </div>
+                <div class="plant-card h-64">
+                    <img src="g2.jpeg" alt="Fiddle leaf fig" class="w-full h-full object-cover">
+                    <div class="plant-card-overlay">
+                        <h3 class="font-bold">Fiddle Leaf Fig</h3>
+                        <p class="text-sm">Moderate maintenance • Bright light</p>
+                    </div>
+                </div>
+                <div class="plant-card h-64">
+                    <img src="g3.jpeg" alt="Snake plant" class="w-full h-full object-cover">
+                    <div class="plant-card-overlay">
+                        <h3 class="font-bold">Snake Plant</h3>
+                        <p class="text-sm">Very low maintenance • Low light tolerant</p>
+                    </div>
+                </div>
+                <div class="plant-card h-64">
+                    <img src="g4.jpeg" alt="Pothos plant" class="w-full h-full object-cover">
+                    <div class="plant-card-overlay">
+                        <h3 class="font-bold">Golden Pothos</h3>
+                        <p class="text-sm">Easy care • Versatile lighting</p>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-10">
+                <a href="gallery.html" class="btn-primary">View All Plants</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Feedback Section -->
+    <section class="py-16 bg-green-50">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold mb-12 text-center section-title">Customer Feedback</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="testimonial-card p-6">
+                    <p class="mb-4">"Rootelier transformed my living room into a beautiful green space. Their team was professional and attentive to my needs!"</p>
+                    <p class="font-semibold">- Jane D.</p>
+                </div>
+                <div class="testimonial-card p-6">
+                    <p class="mb-4">"I love my new office plants! The installation was seamless, and the plants are thriving."</p>
+                    <p class="font-semibold">- Mark T.</p>
+                </div>
+                <div class="testimonial-card p-6">
+                    <p class="mb-4">"The consultation service was incredibly helpful. I learned so much about plant care!"</p>
+                    <p class="font-semibold">- Sarah L.</p>
+                </div>
+                <div class="testimonial-card p-6">
+                    <p class="mb-4">"Their workshops are fun and informative. I can't wait to attend the next one!"</p>
+                    <p class="font-semibold">- Tom R.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section class="py-16">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold mb-12 text-center section-title">Latest Blogs</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-semibold mb-2">5 Tips for Indoor Plant Care</h3>
+                    <p class="mb-4">Discover essential tips to keep your indoor plants thriving and healthy throughout the year.</p>
+                    <a href="#" class="text-green-700 font-medium hover:underline">Read More</a>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-semibold mb-2">Choosing the Right Plants for Your Home</h3>
+                    <p class="mb-4">Learn how to select plants that fit your lifestyle and enhance your living space.</p>
+                    <a href="#" class="text-green-700 font-medium hover:underline">Read More</a>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-semibold mb-2">The Benefits of Having Plants in Your Office</h3>
+                    <p class="mb-4">Explore the positive effects of plants on productivity and well-being in the workplace.</p>
+                    <a href="#" class="text-green-700 font-medium hover:underline">Read More</a>
+                </div>
+            </div>
+            <div class="text-center mt-10">
+                <a href="blog.html" class="btn-primary">View All Blogs</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tips Section -->
+    <section class="py-16">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold mb-12 text-center section-title">Gardening Tips</h2>
+            <div class="space-y-4">
+                <section class="gardening-tips">
+
+  <p>1. Always choose the right plants for your environment. Consider your local climate, sunlight availability, humidity, and temperature. Native and climate-adapted plants often perform best with less effort.</p>
+
+  <p>2. Water your plants according to their specific needs. Overwatering is a common mistake that can cause root rot. Learn the watering frequency and depth each plant prefers, and use well-draining soil.</p>
+
+  <p>3. Regularly check for pests and diseases to keep your plants healthy. Look for signs like wilting, holes in leaves, sticky residue, or unusual spots, and act quickly with organic or chemical treatments.</p>
+
+  <p>4. Fertilize your plants during the growing season to promote growth. Use the right type of fertilizer—organic compost, slow-release granules, or liquid feed—depending on your plant’s needs.</p>
+
+  <p>5. Prune dead leaves and branches to encourage new growth. Pruning improves air circulation, helps plants focus energy on healthy parts, and keeps your garden neat and attractive.</p>
+
+  <p>6. Use mulch around plants to retain soil moisture, regulate temperature, and reduce weed growth. Organic mulches like wood chips or straw also break down and enrich the soil over time.</p>
+
+  <p>7. Rotate crops and plants in garden beds annually to prevent nutrient depletion and reduce the risk of pests and diseases building up in the soil.</p>
+
+  <p>8. Ensure proper drainage in pots and garden beds. Standing water can suffocate roots. Use pots with holes and avoid compacted soil that retains too much moisture.</p>
+
+  <p>9. Choose companion planting techniques to naturally repel pests and promote healthy plant growth. For example, marigolds help deter nematodes and aphids when planted near vegetables.</p>
+
+  <p>10. Keep your garden tools clean and sharp. Sanitized tools prevent the spread of disease from plant to plant, and sharp pruners make cleaner cuts that heal faster.</p>
+</section>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Disclaimer Section -->
+    <section class="py-16 disclaimer">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold mb-12 text-center section-title">Disclaimer</h2>
+            <p>The information provided on this website is for general informational purposes only. Rootelier makes no representations or warranties of any kind, express or implied, about the completeness, accuracy, reliability, suitability, or availability with respect to the website or the information, products, services, or related graphics contained on the website for any purpose.</p>
+        </div>
+    </section>
+
+    <!-- Customer Satisfaction Section -->
+    <section class="py-16">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold mb-12 text-center section-title">Customer Satisfaction</h2>
+            <p>At Rootelier, we prioritize our customers' satisfaction. We are dedicated to providing high-quality services and products that meet your needs and exceed your expectations. Your feedback is invaluable to us, and we continuously strive to improve our offerings.</p>
+        </div>
+    </section>
+
+    <!-- Address Section -->
+    <footer class="py-6 bg-green-800 text-white">
+        <div class="container mx-auto px-6 text-center">
+            <p>Visit us at: 400 Broome St, New York, NY 10013, USA</p>
+        </div>
+    </footer>
+
+    <script>
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>
