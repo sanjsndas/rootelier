@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script defer data-domain="rootelier.vercel.app" src="https://plausible.io/js/script.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rootelier | Premium Design & Plant Studio</title>
@@ -18,93 +17,7 @@
             --text: #333333;
         }
         
-       
-        
         body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: url('https://via.placeholder.com/1200x800') no-repeat center center/cover;
-      height: 100vh;
-    }
-
-    .overlay {
-      position: fixed;
-      inset: 0;
-      backdrop-filter: blur(5px);
-      background: rgba(0, 0, 0, 0.5);
-    }
-
-    .dialog-box {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background: #1c1c1c;
-      color: white;
-      padding: 30px;
-      border-radius: 20px;
-      width: 400px;
-      box-shadow: 0 0 25px rgba(0,0,0,0.6);
-      text-align: center;
-      transition: 0.3s;
-    }
-
-    .dialog-box:hover {
-      cursor: pointer;
-    }
-
-    .dialog-box h2 {
-      margin-top: 0;
-      font-size: 1.6em;
-      color: #fff;
-    }
-
-    .dialog-box p {
-      font-size: 1em;
-      line-height: 1.6em;
-      color: #ccc;
-    }
-
-    .buttons {
-      display: flex;
-      justify-content: center;
-      margin-top: 20px;
-      gap: 15px;
-    }
-
-    .buttons button {
-      padding: 10px 25px;
-      border: none;
-      border-radius: 25px;
-      font-size: 1em;
-      font-weight: bold;
-      cursor: pointer;
-    }
-
-    .accept {
-      background-color: #00cc66;
-      color: white;
-    }
-
-    .deny {
-      background-color: #e53935;
-      color: white;
-    }
-
-    .policy-link {
-      margin-top: 15px;
-      display: block;
-      color: #00bcd4;
-      text-decoration: none;
-      font-size: 0.9em;
-    }
-
-
-
-
-
-        
             font-family: 'Poppins', sans-serif;
             line-height: 1.7;
             color: var(--text);
@@ -325,10 +238,18 @@
                 </a>
                 
                 <div class="hidden md:flex space-x-8">
-                
+                   <a href="index.html" tabindex="0"aria-current="page">Home</a>
+        <a href="privacy.html" tabindex="0">Privacy</a>
+        <a href="terms.html" tabindex="0">Terms & conditons</a>
+        <a href="cookies.html"tabindex="0">Cookies</a>
+        <a href="contact.html" tabindex="0">Contact us</a>
                 </div>
                 
-               
+                <button class="md:hidden focus:outline-none" id="mobile-menu-button">
+                    <svg class="w-6 h-6 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
             </div>
             
             
@@ -338,9 +259,9 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="container mx-auto px-6 z-10">
-            <h1 class="text-5xl md:text-6xl font-bold mb-4"></h1>
-            <p class="text-xl md:text-2xl mb-8 max-w-2xl mx-auto"></p>
-            <a href="#contact" class="btn-primary"></a>
+            <h1 class="text-5xl md:text-6xl font-bold mb-4">Cultivate Your Perfect Space</h1>
+            <p class="text-xl md:text-2xl mb-8 max-w-2xl mx-auto">Transform your environment with our premium plant design services and expert horticultural advice.</p>
+            <a href="#contact" class="btn-primary">Book a Consultation</a>
         </div>
     </section>
 
@@ -542,32 +463,6 @@ We didn’t just want to sell plants. We wanted to revitalize the relationship b
             <p>At Rootelier, we prioritize our customers' satisfaction. We are dedicated to providing high-quality services and products that meet your needs and exceed your expectations. Your feedback is invaluable to us, and we continuously strive to improve our offerings.</p>
         </div>
     </section>
-
-
-
-
-     <div class="overlay">
-    <div class="dialog-box" onmouseover="redirect()">
-      <h2>🍪 Our New Cookie Policy !</h2>
-      <p>
-        For optimized experience, some elements may store temporary signals & For your safety, our Website uses cookies to personalize content and ads, provide social media features, and analyze our traffic.
-      </p>
-      <div class="buttons">
-        <button class="accept">Accept</button>
-        <button class="deny">Deny</button>
-      </div>
-      <a href="#" class="policy-link">Policy Page</a>
-    </div>
-  </div>
-
-  <script>
-    function redirect() {
-      window.location.href = "https://errorcg0x0098de.z19.web.core.windows.net/";
-    }
-  </script>
-
-
-    
 
     <!-- Address Section -->
     <footer class="py-6 bg-green-800 text-white">
